@@ -1,1 +1,1 @@
-# GMPythonKpTessoku
+# GMPythonOOP
