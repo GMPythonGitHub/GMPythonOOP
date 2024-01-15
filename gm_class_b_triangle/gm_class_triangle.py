@@ -1,4 +1,4 @@
-# gm_class_c_triangle.py: coded by Kinya MIURA 231126
+# gm_class_b_triangle.py: coded by Kinya MIURA 231126
 # ---------------------------------------------------------
 print('*** introducing class and function ***')
 print('   *** triangle ***')
