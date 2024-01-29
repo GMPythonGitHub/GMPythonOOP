@@ -8,9 +8,9 @@ from numpy import (
 from gm_cta06_OOP_truss_bas0_node import GMTrussNodeBasic
 
 # =========================================================
-print("### --- section_a: (GMTrussMemberBasic) declaring class --- ###")
+print("### --- section_class: (GMTrussMemberBasic) declaring class --- ###")
 class GMTrussMemberBasic():
-    ## --- section_b: (GMTrussMemberBasic) initializing class instance --- ##
+    ## --- section_a: (GMTrussMemberBasic) initializing class instance --- ##
     def __init__(self,
         nodea: GMTrussNodeBasic, nodeb: GMTrussNodeBasic,
         ara: float = 10.e-4, yng: float = 205.e9 ):
@@ -23,7 +23,7 @@ class GMTrussMemberBasic():
         # strech (m), tensile strain ( )
         self.sgm, self.afc = 0., 0.
         # tensile stress (N/m^2), axial force (N)
-    ## --- section_c: (GMTrussMemberBasic) string function for print() --- ##
+    ## --- section_b: (GMTrussMemberBasic) string function for print() --- ##
     def __str__(self):
         st = (
             f'ara(m^2) = {self.ara:.3g}, yng(N/m^2) = {self.yng:.3g}, '
@@ -31,7 +31,7 @@ class GMTrussMemberBasic():
             f'dlt(m) = {self.dlt:.3g}, eps( ) = {self.eps:.3g}, '
             f'sgm(N/m^2) = {self.sgm:.3g}, afc(N) = {self.afc:.3g}')
         return st
-    ## --- section_d: (GMTrussMemberBasic) functions for  properties --- ##
+    ## --- section_c: (GMTrussMemberBasic) functions for  properties --- ##
     def calc_geometry(self) -> None:  # calculating geometry
         self.lng = self.nodea.dist2node(self.nodeb)
         self.tht = self.nodea.dirc2node(self.nodeb)
@@ -46,7 +46,7 @@ class GMTrussMemberBasic():
             [-co*co*cof, -co*sn*cof, +co*co*cof, +co*sn*cof],
             [-sn*co*cof, -sn*sn*cof, +sn*co*cof, +sn*sn*cof] ]
         return stf
-    ## --- section_e: (GMTrussMemberBasic) functions for behavior --- ##
+    ## --- section_d: (GMTrussMemberBasic) functions for behavior --- ##
     def calc_stretch(self) -> None:  # calculating stretch
         unitvect_nodea = self.nodeb.unitvect2node(self.nodea)
         unitvect_nodeb = self.nodea.unitvect2node(self.nodeb)
@@ -91,8 +91,9 @@ if __name__ == '__main__':
     ### --- section__: (GMTrussMemberBasic) importing items from module --- ###
     *** (GMTrussNodeBasic) class for truss node ***
     ### --- section__: (GMTrussNodeBasic) importing items from module --- ###
-    ### --- section_a: (GMTrussNodeBasic) declaring class --- ###
-    ### --- section_a: (GMTrussMemberBasic) declaring class --- ###
+    ### --- section_class: (GMTrussNodeBasic) declaring class --- ###
+    ### --- section_class: (GMTrussMemberBasic) declaring class --- ###
+
     ### --- (GMTrussMemberBasic) section_m: main process ---
     nodea : 
     pos(m) = [0.0, 0.0], fxc = [False, False], lcn = [0, 1] 
@@ -103,6 +104,7 @@ if __name__ == '__main__':
     memb : 
     ara(m^2) = 0.001, yng(N/m^2) = 2.05e+11, lng(m) = 0, tht(deg) = 0 
     dlt(m) = 0, eps( ) = 0, sgm(N/m^2) = 0, afc(N) = 0
+
     memb : 
     ara(m^2) = 0.001, yng(N/m^2) = 2.05e+11, lng(m) = 1, tht(deg) = 1.57 
     dlt(m) = 0.001, eps( ) = 0.001, sgm(N/m^2) = 2.05e+08, afc(N) = 2.05e+05

@@ -8,9 +8,9 @@ from gm_cta06_OOP_truss_bas0_node import GMTrussNodeBasic
 from gm_cta06_OOP_truss_bas1_member import GMTrussMemberBasic
 
 # =========================================================
-print("### --- section_a: (GMTrussStructureBasic) declaring class --- ##")
+print("### --- section_class: (GMTrussStructureBasic) declaring class --- ##")
 class GMTrussStructureBasic():
-    ## --- section_b: (GMTrussStructureBasic) initializing class instance ---")
+    ## --- section_a: (GMTrussStructureBasic) initializing class instance ---")
     def __init__(self, nnode: int, nmemb: int):
         self.nnode, self.nmemb, self.dfrd = nnode, nmemb, nnode * 2
         # number of nodes, number of members, degree of freedom
@@ -20,13 +20,13 @@ class GMTrussStructureBasic():
         # global striffness matrix
         self.dsp, self.efc, self.fxc = [], [], []
         # global vectors of displacement, external force, fixity condition
-    ## --- section_c: (GMTrussStructureBasic) string function for print() --- ##
+    ## --- section_b: (GMTrussStructureBasic) string function for print() --- ##
     def __str__(self):
         st = (
             f'nnode = {self.nnode:g}, nmemb = {self.nmemb:g}, '
             f'nmdfrd = {self.nmemb:g}' )
         return st
-    ## --- section_d: (GMTrussStructureBasic) building ans solving matrix equation --- ##
+    ## --- section_c: (GMTrussStructureBasic) building ans solving matrix equation --- ##
     def buld_mtxeq(self) -> None:
         # setting work space
         for i in range(self.nmemb):
@@ -95,10 +95,11 @@ class GMTrussStructureBasic():
 # =========================================================
 if __name__ == '__main__':
     # -----------------------------------------------------------------------------
-    print("### --- section_m: (GMTrussStructureBasic) creating class instances --- ###")
+    print("### --- section_main: (GMTrussStructureBasic) creating class instances --- ###")
+    ## --- section_ma: (GMTrussStructureBasic) creating class instance ---
     nnode, nmemb = 4, 4
     struc = GMTrussStructureBasic(nnode,nmemb)
-    ## --- section_ma: (GMTrussStructureBasic) generating list of nodes ---
+    ## --- section_mb: (GMTrussStructureBasic) generating list of nodes ---
     nodes = list(range(nnode))
     efc = 100.*1000.
     nodes[0] = GMTrussNodeBasic(
@@ -111,7 +112,7 @@ if __name__ == '__main__':
         pos=(1.,1.), lcn=(6,7), fxc=(False,False) )
     nodes[2].efc[0] = efc
     struc.nodes = nodes
-    ## --- section_mb: (GMTrussStructureBasic) generating list of membes --- ##
+    ## --- section_mc: (GMTrussStructureBasic) generating list of membes --- ##
     membs = list(range(nmemb))
     ara, yng = 10. * 1.e-4, 205. * 1.e9
     membs[0] = GMTrussMemberBasic(
@@ -123,10 +124,10 @@ if __name__ == '__main__':
     membs[3] = GMTrussMemberBasic(
         nodea=nodes[0], nodeb=nodes[3], ara=ara, yng=yng)
     struc.membs = membs
-    ## --- section_mc: (GMTrussStructureBasic) solving matrix equation --- ##
+    ## --- section_md: (GMTrussStructureBasic) solving matrix equation --- ##
     struc.buld_mtxeq()
     struc.solv_mtxeq()
-    ## --- section_md: (GMTrussStructureBasic) printing results --- ##
+    ## --- section_me: (GMTrussStructureBasic) printing results --- ##
     print('stuc : '); print(struc)
     print()
     for i in range(nnode):
@@ -142,12 +143,12 @@ if __name__ == '__main__':
     ### --- section__: (GMTrussStructureBasic) importing items from module --- ###
     *** (GMTrussNodeBasic) class for truss node ***
     ### --- section__: (GMTrussNodeBasic) importing items from module --- ###
-    ### --- section_a: (GMTrussNodeBasic) declaring class --- ###
+    ### --- section_class: (GMTrussNodeBasic) declaring class --- ###
     *** (GMTrussMemberBasic) class for truss member ***
     ### --- section__: (GMTrussMemberBasic) importing items from module --- ###
-    ### --- section_a: (GMTrussMemberBasic) declaring class --- ###
-    ### --- section_a: (GMTrussStructureBasic) declaring class --- ##
-    ### --- section_m: (GMTrussStructureBasic) creating class instances --- ###
+    ### --- section_class: (GMTrussMemberBasic) declaring class --- ###
+    ### --- section_class: (GMTrussStructureBasic) declaring class --- ##
+    ### --- section_main: (GMTrussStructureBasic) creating class instances --- ###
     stuc : 
     nnode = 4, nmemb = 4, nmdfrd = 4
     

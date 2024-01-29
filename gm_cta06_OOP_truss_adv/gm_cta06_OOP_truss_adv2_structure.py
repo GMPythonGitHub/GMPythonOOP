@@ -17,8 +17,6 @@ class GMTrussStructure():
     def __init__(self, nodes: list, membs: list):
         self._nodes, self._membs = [], []
         # lists of nodes and members
-        self.__numnode, self.__nummemb, self.__dfrd = 0, 0, 0
-        # numbers of nodes and members, and degree of freedom
         self._fixc, self._disp, self._exfc = array([]), array([]), array([])
         # fixity condition list, and displacement and external force vectors
         self._stif = array([[]])
@@ -27,20 +25,19 @@ class GMTrussStructure():
     ## --- section_b: (GMTrussStructure) setting functions --- ##
     def set_truss_structure(self, nodes: list, membs: list) -> None:
         self._nodes, self._membs = nodes, membs
-        self.__numnode, self.__nummemb = len(self._nodes), len(self._membs)
-        self.__dfrd = self.__numnode * len(self._nodes[0].xxyy())
-        self._fixc = full((self.__dfrd,), False)
-        self._disp, self._exfc = zers((self.__dfrd,)), zers((self.__dfrd,))
-        self._stif = zers((self.__dfrd, self.__dfrd,))
+        degfred = len(self._nodes) * len(self._nodes[0].xxyy())
+        self._fixc = full((degfred,), False)
+        self._disp, self._exfc = zers((degfred,)), zers((degfred,))
+        self._stif = zers((degfred, degfred,))
     ## --- section_c: (GMTrussStructure) getting functions --- ##
-    def numnode(self) -> int: return self.__numnode
-    def nummemb(self) -> int: return self.__nummemb
-    def dfrd(self) -> int: return self.__dfrd
+    def numnode(self) -> int: return len(self._nodes)
+    def nummemb(self) -> int: return len(self._membs)
+    def degfred(self) -> int: return len(self._nodes) * len(self._nodes[0].xxyy())
     ## --- section_d: (GMTrussStructure) string function --- ##
     def __str__(self):
         st  = (
             f'numnode = {self.numnode():d}, nummemb = {self.nummemb():d}, '
-            f'dfrd = {self.dfrd():d} ' )
+            f'degfred = {self.degfred():d} ' )
         return st
     def printclass(self, idx: str = '') -> None:
         print(idx + ':: GMTrussStructure ::')
@@ -186,14 +183,14 @@ if __name__ == '__main__':
     *** (GMVector) class for vector ***
     ### --- section_module: (GMVector) importing items from module --- ###
     ### --- section_class: (GMVector) declaring class --- ###
-    ### --- section_a: (GMPoint) declaring class --- ###
+    ### --- section_class: (GMPoint) declaring class --- ###
     ### --- section_class: (GMTrussNode) declaring class --- ###
     ### --- section_class: (GMTrussMember) declaring class --- ###
     ### --- section_class: (GMTrussStructure) declaring class --- ###
     ### --- section_g: (GMTrussStructure) drawing figure --- ###
     ### --- section_main: (GMTrussStructure) setting structure --- ###
     strc -> :: GMTrussStructure ::
-    numnode = 4, nummemb = 4, dfrd = 8 
+    numnode = 4, nummemb = 4, degfred = 8 
     nodes[]: GMTrussNode:
     **[00]:: GMTrussNode ::
     (GMPoint) (GMVector) xxyy = [0. 0.] : rrth = [0. 0.] : unit = 1

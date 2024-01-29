@@ -23,26 +23,26 @@ def gmatan2(yy: float, xx: float, deg=False) -> float:
     return r2d(arctan2(yy, xx)) if deg else arctan2(yy, xx)
 
 # =========================================================
-print("### --- section_a: (GMPoint) declaring class --- ###")
+print("### --- section_class: (GMPoint) declaring class --- ###")
 class GMPoint(GMVector):  # inheriting class GMVector
-    ## --- section_b: (GMPoint) initializing class instance --- ##
+    ## --- section_a: (GMPoint) initializing class instance --- ##
     def __init__(self,
             xxyy: tuple = (0., 0.), rrth: tuple = None, unit: float = 1.,
             cnv: bool = True, deg: bool = True):
         super().__init__(xxyy=xxyy, rrth=rrth, unit=unit, cnv=cnv, deg=deg )
-    ## --- section_c: (GMPoint) setting functions --- ##
+    ## --- section_b: (GMPoint) setting functions --- ##
     def set_point(self,
             xxyy: tuple = None, rrth: tuple = None, unit: float = None,
             cnv: bool = True, deg: bool = True) -> None:
         self.set_vector(xxyy=xxyy, rrth=rrth, unit=unit, cnv=cnv, deg=deg)
-    ## --- section_d: (GMPoint) string function for print() --- ##
+    ## --- section_c: (GMPoint) string function for print() --- ##
     def __str__(self) -> str:
         return '(GMVector) ' + super().__str__()
     def printclass(self, idx: str = '') -> None:
         print(
             idx + ':: GMPoint ::\n  '
             + self.__str__() )
-    ## --- section_e: (GMPoint) functions for analyzing points --- ##
+    ## --- section_d: (GMPoint) functions for analyzing points --- ##
     def copy(self) -> object:
         return copy.deepcopy(self)
     def vect2pint(self, pint: object, cnv: bool = True) -> ndarray:

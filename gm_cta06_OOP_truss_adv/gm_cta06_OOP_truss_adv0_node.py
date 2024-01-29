@@ -53,12 +53,12 @@ class GMTrussNode(GMPoint):  # inheriting class GMPoint(GMVector)
 # =========================================================
 if __name__ == '__main__':
     print("### --- section_main: (GMTrussNode) main process --- ###")
-    ## --- section_m0: (GMTrussNode) setting nodes --- ##
+    ## --- section_ma: (GMTrussNode) setting nodes --- ##
     node_a = GMTrussNode(xxyy=(1., 2.), fixc=(True, True), locn=(0, 1))
     node_a.printclass('node_a -> ')
     node_b = GMTrussNode(xxyy=(2., 1.), fixc=(False, False), locn=(2, 3))
     node_b.printclass('node_b -> ')
-    ## --- section_m1: (GMTrussNode) setting node properties --- ##
+    ## --- section_mb: (GMTrussNode) setting node properties --- ##
     node_c = GMTrussNode(xxyy=(2., 1.))
     node_c.set_truss_node(rrth=(1., 45.), fixc=(False,True), locn=(4, 5))
     node_c._disp.set_vector(xxyy=(1., 0.))

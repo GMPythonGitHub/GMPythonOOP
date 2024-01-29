@@ -80,7 +80,7 @@ class GMVector():
         return outer(self.xxyy(cnv), vect.xxyy(cnv))
     def cross2vect(self, vect: object, cnv: bool = True) -> ndarray:  # cross product
         return cross(self.xxyy(cnv), vect.xxyy(cnv))
-    ## --- section_g: (GMVector) functions for properties --- ##
+    ## --- section_g: (GMVector) functions for operating vectors --- ##
     def convvect(self, vect) -> object:
         if isinstance(vect, GMVector): return vect.xxyy()
         else: return array(vect)
@@ -116,16 +116,16 @@ if __name__ == '__main__':
     *** (GMVector) class for vector ***
     ### --- section_module: (GMVector) importing items from module --- ###
     ### --- section_class: (GMVector) declaring class --- ###
-    ### --- section_m: (GMVector) main calculation process --- ###
+    ### --- section_main: (GMVector) main process --- ###
     vecta -> :: GMVector ::
-    : (xx,yy) = (1, 1) : (rr,th) = (1.41421, 45) : unit = 1
+      xxyy = [1. 1.] : rrth = [ 1.41421356 45.        ] : unit = 1
     vectb -> :: GMVector ::
-    : (xx,yy) = (1, -1) : (rr,th) = (1.41421, -45) : unit = 1
+      xxyy = [ 1. -1.] : rrth = [  1.41421356 -45.        ] : unit = 1
     vecta.leng() = 1.4142135623730951
-    vecta.dirc() = 0.7853981633974483
+    vecta.dirc() = 45.0
     vecta.unitvect() = array([0.70710678, 0.70710678])
     vectb.leng() = 1.4142135623730951
-    vectb.dirc() = -0.7853981633974483
+    vectb.dirc() = -45.0
     vectb.unitvect() = array([ 0.70710678, -0.70710678])
     vecta.inner2vect(vectb) = 0.0
     vecta.outer2vect(vectb) = array([[ 1., -1.], [ 1., -1.]])

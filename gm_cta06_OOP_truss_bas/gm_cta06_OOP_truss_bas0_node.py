@@ -7,9 +7,9 @@ from numpy import (
     square, sqrt, sin, cos, arctan2 as atan2)
 
 # =========================================================
-print("### --- section_a: (GMTrussNodeBasic) declaring class --- ###")
+print("### --- section_class: (GMTrussNodeBasic) declaring class --- ###")
 class GMTrussNodeBasic():
-    ## --- section_b: (GMTrussNodeBasic) initializing class instance --- ##
+    ## --- section_a: (GMTrussNodeBasic) initializing class instance --- ##
     def __init__(self,
             pos: tuple = (0., 0.),
             fxc: tuple = (False, False), lcn: tuple = (0, 1) ):
@@ -17,13 +17,13 @@ class GMTrussNodeBasic():
         # position (m), fixity condition (bool), location in matrix equation (int)
         self.dsp, self.efc = [0., 0.], [0., 0.]
         # displacement (m), external force (N)
-    ## --- section_c: (GMTrussNodeBasic) string function for print() --- ##
+    ## --- section_b: (GMTrussNodeBasic) string function for print() --- ##
     def __str__(self):
         st = (
             f'pos(m) = {self.pos}, fxc = {self.fxc}, lcn = {self.lcn} \n'
             f'dsp(m) = {self.dsp}, efc(N) = {self.efc}' )
         return st
-    ## --- section_d: (GMTrussNodeBasic) functions calculating nodes --- ##
+    ## --- section_c: (GMTrussNodeBasic) functions calculating nodes --- ##
     def post2node(self, node: object)-> list:  # position to node
         return [node.pos[0]-self.pos[0], node.pos[1]-self.pos[1]]
     def dist2node(self, node: object) -> float:  # distance to node
@@ -39,7 +39,7 @@ class GMTrussNodeBasic():
 # =========================================================
 if __name__ == '__main__':
     # -----------------------------------------------------------------------------
-    print("### --- section_m: main process --- ###")
+    print("### --- section_main: main process --- ###")
     ## --- section_ma: (GMTrussNodeBasic) creating class instances --- ##
     nodea = GMTrussNodeBasic(pos=(0., 0.), fxc=(False, False), lcn=(0, 1))
     nodea.dsp, nodea.efc = list((0., 1.*0.001)), list((10.*1000., 0.))
@@ -62,14 +62,16 @@ if __name__ == '__main__':
     '''
     *** (GMTrussNodeBasic) class for truss node ***
     ### --- section__: (GMTrussNodeBasic) importing items from module --- ###
-    ### --- section_a: (GMTrussNodeBasic) declaring class --- ###
-    ### --- section_m: main process --- ###
+    ### --- section_class: (GMTrussNodeBasic) declaring class --- ###
+
+    ### --- section_main: main process --- ###
     nodea : 
     pos(m) = [0.0, 0.0], fxc = [False, False], lcn = [0, 1] 
     dsp(m) = [0.0, 0.001], efc(N) = [10000.0, 0.0]
     nodeb : 
     pos(m) = [1.0, 1.0], fxc = [False, False], lcn = [0, 1] 
     dsp(m) = [0.0, 0.002], efc(N) = [20000.0, 0.0]
+
     nodea.post2node(nodeb) = [1.0, 1.0]
     nodea.dist2node(nodeb) = 1.4142135623730951
     nodea.dirc2node(nodeb) = 0.7853981633974483
