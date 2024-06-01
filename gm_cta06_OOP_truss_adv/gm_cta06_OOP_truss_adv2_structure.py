@@ -1,4 +1,4 @@
-# gm_cta06_OOP_truss_adv2_structure.py: coded by Kinya MIURA 230518
+# gm_cta06_OOP_truss_adv_prob_a1.py: coded by Kinya MIURA 240530
 # ---------------------------------------------------------
 print("\n*** (GMTrussStructure) class for segment ***")
 print("  *** class GMTrussNode, GMTrussMemberAdvanced are embedded as nodes and membsb ***")

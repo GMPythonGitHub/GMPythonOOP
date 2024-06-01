@@ -1,13 +1,9 @@
-# gm_cta06_OOP_truss_adv2_structure.py: coded by Kinya MIURA 230518
+# gm_cta06_OOP_truss_adv_prob_a1.py: coded by Kinya MIURA 240530
 # ---------------------------------------------------------
 print("\n*** (GMTrussStructure) class for segment ***")
 print("  *** class GMTrussNode, GMTrussMemberAdvanced are embedded as nodes and membsb ***")
 # ---------------------------------------------------------
 print("### --- section_module: (GMTrussStructure) importing items from module --- ###")
-from numpy import (
-    array, append, zeros as zers, full, ix_,
-    inner, logical_not as lognot)
-from numpy.linalg import solve
 from gm_cta06_OOP_truss_adv2_structure import (
     GMTrussNode, GMTrussMember, GMTrussStructure )
 
@@ -86,8 +82,6 @@ strc = GMTrussStructure(nodes=nodes, membs=membs)
 
 ## --- section_md: (GMTrussStructure) building and solving matrix equation --- ##
 strc.buld_matrixeq()
-
-## --- section_md: (GMTrussStructure) solving matrix equation --- ##
 strc.solv_matrixeq()
 strc.printclass('strc -> ')
 
