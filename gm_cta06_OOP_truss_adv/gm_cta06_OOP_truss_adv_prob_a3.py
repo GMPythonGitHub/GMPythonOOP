@@ -23,9 +23,11 @@ nodes[1] = GMTrussNode(
 for istry in range(nstry):
     nodeo = 2 + 2 * istry
     nodes[nodeo+0] = GMTrussNode(
-        xxyy=(leng*0, leng*(istry+1)), fixc=(False, False), locn=(nodeo*2+0, nodeo*2+1) )
+        xxyy=(leng*0, leng*(istry+1)),
+        fixc=(False, False), locn=(nodeo*2+0, nodeo*2+1) )
     nodes[nodeo+1] = GMTrussNode(
-        xxyy=(leng*1, leng*(istry+1)), fixc=(False, False), locn=(nodeo*2+2, nodeo*2+3) )
+        xxyy=(leng*1, leng*(istry+1)),
+        fixc=(False, False), locn=(nodeo*2+2, nodeo*2+3) )
 nodes[nstry*2]._exfc.set_vector(xxyy=(exfc, 0.))
 
 ## --- section_mb: (GMTrussStructure) setting list of members --- ##
@@ -56,6 +58,23 @@ strc.printclass('strc -> ')
 strc.graph(
     scl_dfm=0.05/nstry, scl_frc=0.005/nstry,
     xlim=(-1.0,1+nstry), ylim=(-1.0, 1+nstry) )
+
+## --- section_me: (GMTrussStructureAdvanced) finding max and min values --- ##
+print()
+dispxs = []
+for node in nodes:
+    dispxs.append(node._disp.xxyy(True)[0])
+dispxmax = max(dispxs); dispxmaxidx = dispxs.index(dispxmax)
+print(f'{dispxmax = }: {dispxmaxidx = }')
+
+# axial force
+print()
+axfcs = []
+for memb in membs:
+    axfcs.append(memb.axfc(True))
+# axfcs = [memb.axfc() for memb in membs]
+axfcmax = max(axfcs); axfcmaxidx = axfcs.index(axfcmax)
+print(f'{axfcmax = }: {axfcmaxidx = }')
 
 # =========================================================
 # terminal log / terminal log / terminal log /
