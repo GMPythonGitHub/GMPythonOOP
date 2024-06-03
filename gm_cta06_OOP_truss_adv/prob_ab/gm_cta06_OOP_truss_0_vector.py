@@ -82,7 +82,7 @@ class GMVector():
         return cross(self.xxyy(cnv), vect.xxyy(cnv))
     ## --- section_g: (GMVector) functions for operating vectors --- ##
     def convvect(self, vect) -> object:
-        if isinstance(vect, GMVector): return vect.xxyy()
+        if isinstance(vect, GMVector): return vect.xxyy(False)
         else: return array(vect)
     def add(self, vect: object) -> None: self.__xxyy += self.convvect(vect)
     def sub(self, vect: object) -> None: self.__xxyy -= self.convvect(vect)

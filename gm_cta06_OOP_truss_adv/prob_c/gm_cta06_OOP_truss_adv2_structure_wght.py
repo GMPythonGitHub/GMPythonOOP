@@ -81,6 +81,8 @@ class GMTrussStructure():
             self._nodes[i]._disp.set_xxyy(xxyy, cnv=False)
         for memb in self._membs:
             memb.calc_stretch()
+        for node in self._nodes:
+            node._rafc.sub(node._wght)
 
     # =========================================================
     print("### --- section_g: (GMTrussStructure) drawing figure --- ###")
